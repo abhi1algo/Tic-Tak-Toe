@@ -1,0 +1,529 @@
+package com.example.tiktaktoe;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+
+// zero matrix won or not class
+class zeroMatrix{
+
+
+    public boolean check(int mat[][])
+    {
+        if(mat[0][0]==0 && mat[0][1]==0 && mat[0][2]==0)return true;
+
+        else if (mat[1][0]==0 && mat[1][1]==0 && mat[1][2]==0)return true;
+
+        else if (mat[2][0]==0 && mat[2][1]==0 && mat[2][2]==0)return true;
+
+        else if (mat[0][0]==0 && mat[1][1]==0 && mat[2][2]==0)return true;
+
+        else if (mat[0][2]==0 && mat[1][1]==0 && mat[2][0]==0)return true;
+
+        else if (mat[0][0]==0 && mat[1][0]==0 && mat[2][0]==0)return true;
+
+        else if (mat[0][1]==0 && mat[1][1]==0 && mat[2][1]==0)return true;
+
+        else if (mat[0][2]==0 && mat[1][2]==0 && mat[2][2]==0)return true;
+
+        return false;
+    }
+
+
+}
+
+
+
+// cross matrix determinant calculation
+class crossMatrix{
+
+
+    public boolean check(int mat[][])
+    {
+        if(mat[0][0]==0 && mat[0][1]==0 && mat[0][2]==0)return true;
+
+        else if (mat[1][0]==0 && mat[1][1]==0 && mat[1][2]==0)return true;
+
+        else if (mat[2][0]==0 && mat[2][1]==0 && mat[2][2]==0)return true;
+
+        else if (mat[0][0]==0 && mat[1][1]==0 && mat[2][2]==0)return true;
+
+        else if (mat[0][2]==0 && mat[1][1]==0 && mat[2][0]==0)return true;
+
+        else if (mat[0][0]==0 && mat[1][0]==0 && mat[2][0]==0)return true;
+
+        else if (mat[0][1]==0 && mat[1][1]==0 && mat[2][1]==0)return true;
+
+        else if (mat[0][2]==0 && mat[1][2]==0 && mat[2][2]==0)return true;
+
+        return false;
+    }
+
+}
+
+
+
+public class MainActivity extends AppCompatActivity {
+
+
+
+    int zero[][] = { { 1, 1, 1},
+            { 1, 1, 1 },
+            { 1, 1, 1}};
+
+    int cross[][] = { { 1, 1, 1},
+            { 1, 1, 1 },
+            { 1, 1, 1}};
+
+   crossMatrix objX=new crossMatrix();
+   zeroMatrix obj0=new zeroMatrix();
+
+    int zeroZeroChance=1;
+    int zeroOneChance=1;
+    int zeroTwoChance=1;
+    int oneZeroChance=1;
+    int oneOneChance=1;
+    int oneTwoChance=1;
+    int twoZeroChance=1;
+    int twoOneChance=1;
+    int twoTwoChance=1;
+   // TextView zeroWon= (TextView) findViewById(R.id.zeroWon);
+
+
+    boolean chance=true;
+
+    public void zerozero(View view)
+    {
+        if(zeroZeroChance==-1)return;
+
+        TextView zeroWon= (TextView) findViewById(R.id.zeroWon);
+        TextView crossWon= (TextView) findViewById(R.id.crossWon);
+        View button=(View)findViewById(R.id.playAgian);
+
+            if(chance){
+                zero[0][0]=0;
+                ImageView zerozero0=(ImageView) findViewById(R.id.zerozero0);
+                zerozero0.animate().alpha(1).setDuration(300);
+                chance=false;
+                if(obj0.check(zero))
+                {
+                    zeroWon.setVisibility(View.VISIBLE);
+                    button.animate().alpha(1).setDuration(2000);
+
+                }
+
+
+            }
+
+            else
+            {
+                cross[0][0]=0;
+                ImageView zerozeroX=(ImageView) findViewById(R.id.zerozeroX);
+                zerozeroX.animate().alpha(1).setDuration(300);
+                chance=true;
+                if(objX.check(cross))
+                {
+                    crossWon.setVisibility(View.VISIBLE);
+                    button.animate().alpha(1).setDuration(2000);
+                }
+            }
+
+        zeroZeroChance=-1;
+
+    }
+
+    public void zeroone(View view)
+    {
+        if(zeroOneChance==-1)return;
+
+        TextView zeroWon= (TextView) findViewById(R.id.zeroWon);
+        TextView crossWon= (TextView) findViewById(R.id.crossWon);
+        View button=(View)findViewById(R.id.playAgian);
+        if(chance){
+            zero[0][1]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.zeroone0);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=false;
+            if(obj0.check(zero))
+            {
+                zeroWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+
+            }
+        }
+
+        else
+        {
+            cross[0][1]=0;
+            ImageView zerooneX=(ImageView) findViewById(R.id.zerooneX);
+            zerooneX.animate().alpha(1).setDuration(300);
+            chance=true;
+            if(objX.check(cross))
+            {
+                crossWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+            }
+        }
+
+        zeroOneChance=-1;
+    }
+
+    public void zerotwo(View view)
+    {
+        if(zeroTwoChance==-1)return;
+
+        TextView zeroWon= (TextView) findViewById(R.id.zeroWon);
+        TextView crossWon= (TextView) findViewById(R.id.crossWon);
+        View button=(View)findViewById(R.id.playAgian);
+        if(chance){
+
+            zero[0][2]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.zerotwo0);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=false;
+            if(obj0.check(zero))
+            {
+                zeroWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+
+            }
+        }
+
+        else
+        {
+            cross[0][2]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.zerotwoX);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=true;
+            if(objX.check(cross))
+            {
+                crossWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+            }
+        }
+
+        zeroTwoChance=-1;
+    }
+
+    public void onezero(View view)
+    {
+        if(oneZeroChance==-1)return;
+        TextView zeroWon= (TextView) findViewById(R.id.zeroWon);
+        TextView crossWon= (TextView) findViewById(R.id.crossWon);
+        View button=(View)findViewById(R.id.playAgian);
+        if(chance){
+
+            zero[1][0]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.onezero0);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=false;
+            if(obj0.check(zero))
+            {
+                zeroWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+
+            }
+        }
+
+        else
+        {
+            cross[1][0]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.onezeroX);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=true;
+            if(objX.check(cross))
+            {
+                crossWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+            }
+        }
+
+        oneZeroChance=-1;
+
+    }
+
+
+    public void oneone(View view)
+    {
+
+        if(oneOneChance==-1)return;
+        TextView zeroWon= (TextView) findViewById(R.id.zeroWon);
+        TextView crossWon= (TextView) findViewById(R.id.crossWon);
+        View button=(View)findViewById(R.id.playAgian);
+
+        if(chance){
+
+            zero[1][1]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.oneone0);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=false;
+            if(obj0.check(zero))
+            {
+                zeroWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+
+            }
+        }
+
+        else
+        {
+            cross[1][1]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.oneoneX);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=true;
+            if(objX.check(cross))
+            {
+                crossWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+            }
+        }
+
+        oneOneChance=-1;
+
+    }
+
+    public void onetwo(View view)
+    {
+
+        if(oneTwoChance==-1)return;
+        TextView zeroWon= (TextView) findViewById(R.id.zeroWon);
+        TextView crossWon= (TextView) findViewById(R.id.crossWon);
+        View button=(View)findViewById(R.id.playAgian);
+        if(chance){
+
+            zero[1][2]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.onetwo0);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=false;
+            if(obj0.check(zero))
+            {
+                zeroWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+
+            }
+        }
+
+        else
+        {
+            cross[1][2]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.onetwoX);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=true;
+            if(objX.check(cross))
+            {
+                crossWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+            }
+        }
+
+        oneTwoChance=-1;
+
+    }
+
+    public void twozero(View view)
+    {
+        if(twoZeroChance==-1)return;
+        TextView zeroWon= (TextView) findViewById(R.id.zeroWon);
+        TextView crossWon= (TextView) findViewById(R.id.crossWon);
+        View button=(View)findViewById(R.id.playAgian);
+        if(chance){
+
+            zero[2][0]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.twozero0);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=false;
+            if(obj0.check(zero))
+            {
+                zeroWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+
+            }
+        }
+
+        else
+        {
+            cross[2][0]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.twozeroX);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=true;
+            if(objX.check(cross))
+            {
+                crossWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+            }
+        }
+
+        twoZeroChance=-1;
+
+    }
+
+    public void twoone(View view)
+    {
+
+        if(twoOneChance==-1)return;
+        TextView zeroWon= (TextView) findViewById(R.id.zeroWon);
+        TextView crossWon= (TextView) findViewById(R.id.crossWon);
+        View button=(View)findViewById(R.id.playAgian);
+        if(chance){
+
+            zero[2][1]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.twoone0);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=false;
+            if(obj0.check(zero))
+            {
+                zeroWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+
+            }
+        }
+
+        else
+        {
+            cross[2][1]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.twooneX);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=true;
+            if(objX.check(cross))
+            {
+                crossWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+            }
+        }
+
+        twoOneChance=-1;
+
+    }
+
+    public void twotwo(View view)
+    {
+
+        if(twoTwoChance==-1)return;
+        TextView zeroWon= (TextView) findViewById(R.id.zeroWon);
+        TextView crossWon= (TextView) findViewById(R.id.crossWon);
+        View button=(View)findViewById(R.id.playAgian);
+        if(chance){
+
+            zero[2][2]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.twotwo0);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=false;
+            if(obj0.check(zero))
+            {
+                zeroWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+
+            }
+        }
+
+        else
+        {
+            cross[2][2]=0;
+            ImageView zerozero0=(ImageView) findViewById(R.id.twotwoX);
+            zerozero0.animate().alpha(1).setDuration(300);
+            chance=true;
+            if(objX.check(cross))
+            {
+                crossWon.setVisibility(View.VISIBLE);
+                button.animate().alpha(1).setDuration(2000);
+            }
+        }
+
+        twoTwoChance=-1;
+
+
+    }
+
+    //reset game function
+
+    public void playAgain(View view)
+    {
+        for(int i=0;i<3;i++) for(int j=0;j<3;j++)zero[i][j]=1;
+
+        for(int i=0;i<3;i++) for(int j=0;j<3;j++)cross[i][j]=1;
+
+        zeroZeroChance=1;
+        zeroOneChance=1;
+        zeroTwoChance=1;
+        oneZeroChance=1;
+        oneOneChance=1;
+        oneTwoChance=1;
+        twoZeroChance=1;
+        twoOneChance=1;
+        twoTwoChance=1;
+
+        chance=true;
+
+        TextView zeroWon= (TextView) findViewById(R.id.zeroWon);
+        TextView crossWon= (TextView) findViewById(R.id.crossWon);
+        View button=(View)findViewById(R.id.playAgian);
+
+        zeroWon.setVisibility(View.INVISIBLE);
+        crossWon.setVisibility(View.INVISIBLE);
+        button.animate().alpha(0).setDuration(1);
+
+
+
+        //MAKING ALL ZERO AND CROSS ALPHA=0
+
+        ImageView zerozero0=(ImageView) findViewById(R.id.zerozero0);
+        zerozero0.animate().alpha(0).setDuration(1);
+        ImageView zerozeroX=(ImageView) findViewById(R.id.zerozeroX);
+        zerozeroX.animate().alpha(0).setDuration(1);
+
+        ImageView zeroone0=(ImageView) findViewById(R.id.zeroone0);
+        zeroone0.animate().alpha(0).setDuration(1);
+        ImageView zerooneX=(ImageView) findViewById(R.id.zerooneX);
+        zerooneX.animate().alpha(0).setDuration(1);
+
+        ImageView zerotwo0=(ImageView) findViewById(R.id.zerotwo0);
+        zerotwo0.animate().alpha(0).setDuration(1);
+        ImageView zerotwoX=(ImageView) findViewById(R.id.zerotwoX);
+        zerotwoX.animate().alpha(0).setDuration(1);
+
+        ImageView onezero0=(ImageView) findViewById(R.id.onezero0);
+        onezero0.animate().alpha(0).setDuration(1);
+        ImageView onezeroX=(ImageView) findViewById(R.id.onezeroX);
+        onezeroX.animate().alpha(0).setDuration(1);
+
+        ImageView oneone0=(ImageView) findViewById(R.id.oneone0);
+        oneone0.animate().alpha(0).setDuration(1);
+        ImageView oneoneX=(ImageView) findViewById(R.id.oneoneX);
+        oneoneX.animate().alpha(0).setDuration(1);
+
+        ImageView onetwo0=(ImageView) findViewById(R.id.onetwo0);
+        onetwo0.animate().alpha(0).setDuration(1);
+        ImageView onetwoX=(ImageView) findViewById(R.id.onetwoX);
+        onetwoX.animate().alpha(0).setDuration(1);
+
+        ImageView twozero0=(ImageView) findViewById(R.id.twozero0);
+        twozero0.animate().alpha(0).setDuration(1);
+        ImageView twozeroX=(ImageView) findViewById(R.id.twozeroX);
+        twozeroX.animate().alpha(0).setDuration(1);
+
+        ImageView twoone0=(ImageView) findViewById(R.id.twoone0);
+        twoone0.animate().alpha(0).setDuration(1);
+        ImageView twooneX=(ImageView) findViewById(R.id.twooneX);
+        twooneX.animate().alpha(0).setDuration(1);
+
+        ImageView twotwo0=(ImageView) findViewById(R.id.twotwo0);
+        twotwo0.animate().alpha(0).setDuration(1);
+        ImageView twotwoX=(ImageView) findViewById(R.id.twotwoX);
+        twotwoX.animate().alpha(0).setDuration(1);
+
+
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}
